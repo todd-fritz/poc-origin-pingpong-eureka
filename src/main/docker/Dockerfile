@@ -3,6 +3,7 @@
 #
 #Using the centos7 base image instead.
 FROM centos:centos7
+MAINTAINER todd-fritz
 # Update the image with the latest packages (recommended)
 RUN yum -y update && yum -y upgrade && yum clean all
 RUN yum -y install wget && yum clean all
@@ -12,7 +13,7 @@ RUN rm -f /tmp/jdk-8u60-linux-x64.rpm
 #
 #
 VOLUME /tmp
-ADD sample-eureka-1.0.0-SNAPSHOT.jar /app.jar
+ADD poc-origin-pingpong-eureka-1.0.0-SNAPSHOT.jar /app.jar
 RUN bash -c 'touch /app.jar'
 EXPOSE 8761
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]

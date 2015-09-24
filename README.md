@@ -35,3 +35,13 @@ Running it all local is simple, do the following in sequence, in four different 
 
 
 If all the applications have come up cleanly, the endpoint should be available at http://localhost:8080
+
+
+Notes:
+https://github.com/spotify/docker-maven-plugin#specify-build-info-in-the-pom
+https://docs.docker.com/installation/mac/
+
+Creating and pushing a new release to Dockerhub:
+`export DOCKER_HOST=tcp://localhost:2375`
+`mvn clean package docker:build`
+`mvn clean package docker:build -DpushImage`
