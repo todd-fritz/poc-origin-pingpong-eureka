@@ -59,7 +59,9 @@ Creating and pushing a new release to Dockerhub:
 
 `docker push tfritz/poc-docker-springboot-helloworldip`
 
-`docker run -p 8761:8761 -t tfritz/poc-origin-pingpong-eureka`
+`docker run -p 8761:8761 -t tfritz/poc-origin-pingpong-eureka:1.0.0-SNAPSHOT`
+
+`docker run -it --rm -p 8761:8761 tfritz/poc-origin-pingpong-eureka:1.0.0-SNAPSHOT`
 
 
 Notes:
