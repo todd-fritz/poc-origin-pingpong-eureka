@@ -1,15 +1,6 @@
-#java:8 is the standard distro which is huge.
-#FROM java:8
-#
-#Using the centos7 base image instead.
-FROM centos:centos7
+FROM java:7
 MAINTAINER todd-fritz
 # Update the image with the latest packages (recommended)
-RUN yum -y update && yum -y upgrade && yum clean all
-RUN yum -y install wget && yum clean all
-RUN wget -c -O /tmp/jdk-8u60-linux-x64.rpm --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.rpm
-RUN yum -y localinstall /tmp/jdk-8u60-linux-x64.rpm && yum clean all
-RUN rm -f /tmp/jdk-8u60-linux-x64.rpm
 #
 #
 VOLUME /tmp

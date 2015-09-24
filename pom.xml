@@ -25,6 +25,8 @@
     <properties>
         <start-class>org.bk.eureka.EurekaApplication</start-class>
 
+        <docker.image.prefix>tfritz</docker.image.prefix>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.compiler.plugin>2.3.1</version.compiler.plugin>
         <maven.compiler.target>1.7</maven.compiler.target>
@@ -89,6 +91,7 @@
 
     <build>
         <plugins>
+
             <!-- <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>fabric8-maven-plugin</artifactId>
@@ -111,18 +114,21 @@
             </plugin> -->
 
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>${plugin.docker-maven-plugin.version}</version>
                 <configuration>
-                    <imageName>tfritz/${artifactId}:jar</imageName>
-                    <imageTags><imageTag>execjar</imageTag></imageTags>
+                    <imageName>tfritz/${project.artifactId}:${project.version}</imageName>
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                     <skipDockerBuild>false</skipDockerBuild>
-                    <dockerHost></dockerHost>
                     <resources>
                         <resource>
-                            <targetPath>${docker.resource.targetPath}</targetPath>
+                            <targetPath>/</targetPath>
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
@@ -130,6 +136,8 @@
                     <serverId>docker-hub</serverId>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
+
 </project>

@@ -7,30 +7,45 @@ The originating project has been modified to deploy to OpenShift Origin (v3) as 
 This project is based on spring cloud, spring boot, and eureka.  Hysterix is included (refer to monitor project).
 
 Five, separate repositories are used for the example (by deployment order):
+
 1. [poc-origin-pingpong-eureka](https://github.com/todd-fritz/poc-origin-pingpong-eureka)
+
 2. [poc-origin-pingpong-config](https://github.com/todd-fritz/poc-origin-pingpong-config)
+
 3. [poc-origin-pingpong-monitor](https://github.com/todd-fritz/poc-origin-pingpong-monitor)
+
 4. [poc-origin-pingpong-ping](https://github.com/todd-fritz/poc-origin-pingpong-ping)
+
 5. [poc-origin-pingpong-pong](https://github.com/todd-fritz/poc-origin-pingpong-pong)
+
 
 ## Running on a Local Machine
 Running it all local is simple, do the following in sequence, in four different terminal windows:
 
 * Start up Eureka (source,java)
-  `cd poc-origin-pingpong-eureka`
-  `mvn spring-boot:run`
+
+`cd poc-origin-pingpong-eureka`
+
+`mvn spring-boot:run`
+
   Eureka can be accessed at this URL:  http://localhost:8761/
 
 * Start up Config server (source,java)
+
 `cd poc-origin-pingpong-config`
+
 `mvn spring-boot:run`
 
 * Start up Pong Service (source,java)
+
 `cd poc-origin-pingpong-pong`
+
 `mvn spring-boot:run`
 
 * Start up Ping Service (source,java)
+
 `cd poc-origin-pingpong-ping`
+
 `mvn spring-boot:run`
 
 
@@ -42,6 +57,11 @@ https://github.com/spotify/docker-maven-plugin#specify-build-info-in-the-pom
 https://docs.docker.com/installation/mac/
 
 Creating and pushing a new release to Dockerhub:
-`export DOCKER_HOST=tcp://localhost:2375`
+
+`eval "$(docker-machine env default)`
+
 `mvn clean package docker:build`
-`mvn clean package docker:build -DpushImage`
+
+`docker push tfritz/poc-docker-springboot-helloworldip`
+
+`docker run -p 8761:8761 -t tfritz/poc-origin-pingpong-eureka`
