@@ -51,11 +51,6 @@ Running it all local is simple, do the following in sequence, in four different 
 
 If all the applications have come up cleanly, the endpoint should be available at http://localhost:8080
 
-
-Notes:
-https://github.com/spotify/docker-maven-plugin#specify-build-info-in-the-pom
-https://docs.docker.com/installation/mac/
-
 Creating and pushing a new release to Dockerhub:
 
 `eval "$(docker-machine env default)`
@@ -65,3 +60,9 @@ Creating and pushing a new release to Dockerhub:
 `docker push tfritz/poc-docker-springboot-helloworldip`
 
 `docker run -p 8761:8761 -t tfritz/poc-origin-pingpong-eureka`
+
+
+Notes:
+https://github.com/spotify/docker-maven-plugin#specify-build-info-in-the-pom
+https://docs.docker.com/installation/mac/
+https://github.com/docker/docker/issues/2509
