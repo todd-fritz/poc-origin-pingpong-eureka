@@ -57,16 +57,16 @@ Creating and pushing a new release to Dockerhub:
 
 `mvn clean package docker:build`
 
-`docker push tfritz/poc-docker-springboot-helloworldip`
+`docker push tfritz/poc-origin-pingpong-eureka`
 
 If running via Docker toolbox, forward port 8761 (leave host and guest host info, empty).
 
-`docker run -d -p 8761:8761 -t --name poc-eureka tfritz/poc-origin-pingpong-eureka:1.0.0-SNAPSHOT`
+`docker run -d -p 8761:8761 -t --name poc-eureka --hostname poc-eureka tfritz/poc-origin-pingpong-eureka:1.0.0-SNAPSHOT`
 
 
 Interactive run mode for debugging only:
 
-`docker run -it --rm -p 8761:8761 --name poc-eureka tfritz/poc-origin-pingpong-eureka:1.0.0-SNAPSHOT`
+`docker run -it --rm -p 8761:8761 --name poc-eureka --hostname poc-eureka tfritz/poc-origin-pingpong-eureka:1.0.0-SNAPSHOT`
 
 
 Notes:
